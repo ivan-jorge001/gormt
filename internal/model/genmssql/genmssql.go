@@ -6,7 +6,6 @@ import (
 	"sort"
 	"strings"
 
-	"gorm.io/driver/sqlserver"
 	"gorm.io/gorm"
 
 	"github.com/wonli/gormt/config"
@@ -22,14 +21,7 @@ type mssqlModel struct {
 
 // GenModel get model.DBInfo info.获取数据库相关属性
 func (m *mssqlModel) GenModel() model.DBInfo {
-	dsn := fmt.Sprintf("server=%v;database=%v;user id=%v;password=%v;port=%v;encrypt=disable",
-		config.GetDbInfo().Host, config.GetDbInfo().Database, config.GetDbInfo().Username, config.GetDbInfo().Password, config.GetDbInfo().Port)
-	db, err := gorm.Open(sqlserver.Open(dsn), &gorm.Config{})
-	if err != nil {
-		log.Printf("Gen error: %s", err)
-		return model.DBInfo{}
-	}
-
+	db := config.GetDBConfig().Gorm
 	defer func() {
 		sqldb, _ := db.DB()
 		sqldb.Close()
@@ -44,7 +36,7 @@ func (m *mssqlModel) GenModel() model.DBInfo {
 
 // GetDbName get database name.获取数据库名字
 func (m *mssqlModel) GetDbName() string {
-	return config.GetDbInfo().Database
+	return config.GetDBConfig().Database
 }
 
 // GetTableNames get table name.获取格式化后指定的表名

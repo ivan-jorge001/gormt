@@ -6,7 +6,6 @@ import (
 	"sort"
 	"strings"
 
-	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 
 	"github.com/wonli/gormt/config"
@@ -22,11 +21,7 @@ type sqliteModel struct {
 
 // GenModel get model.DBInfo info.获取数据库相关属性
 func (m *sqliteModel) GenModel() model.DBInfo {
-	db, err := gorm.Open(sqlite.Open(config.GetDbInfo().Host), &gorm.Config{})
-	if err != nil {
-		log.Printf("Gen error %s: ", err)
-		return model.DBInfo{}
-	}
+	db := config.GetDBConfig().Gorm
 	defer func() {
 		sqldb, _ := db.DB()
 		_ = sqldb.Close()
@@ -41,7 +36,7 @@ func (m *sqliteModel) GenModel() model.DBInfo {
 
 // GetDbName get database name.获取数据库名字
 func (m *sqliteModel) GetDbName() string {
-	dir := config.GetDbInfo().Host
+	dir := config.GetDBConfig().Database
 	dir = strings.Replace(dir, "\\", "/", -1)
 	if len(dir) > 0 {
 		if dir[len(dir)-1] == '/' {

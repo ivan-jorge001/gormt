@@ -4,38 +4,34 @@ import (
 	"fmt"
 	"log"
 	"strings"
+
+	"gorm.io/gorm"
 )
 
 // Config custom config struct
 type Config struct {
-	DBInfo            DBInfo            `yaml:"db_info"`
-	PkgName           string            `yaml:"pkg_name"`              // 生成文件包名
-	OutDir            string            `yaml:"out_dir"`               // 保存路径
-	OutFileName       string            `yaml:"out_file_name"`         // 保存文件名
-	DbTag             string            `yaml:"db_tag"`                // 数据库标签（gorm）
-	IsJsonTag         bool              `yaml:"is_json_tag"`           // 是否使用json标签
-	IsJsonTagPkHidden bool              `yaml:"is_json_tag_pk_hidden"` // json标记是否隐藏主键
-	IsNullToPoint     bool              `yaml:"is_null_to_point"`      // null
-	IsNullToSqlNull   bool              `yaml:"is_null_to_sql_null"`   // sql null
-	TablePrefix       string            `yaml:"table_prefix"`          // 表前缀
-	StripTablePrefix  bool              `yaml:"strip_table_prefix"`    // 移除表前缀
-	SelfTypeDef       map[string]string `yaml:"self_type_define"`      // 自定义类型
-	TableNames        string            `yaml:"table_names"`           // 表名（多个表名用","隔开）
+	DBConfig          *DBConfig
+	PkgName           string            // 生成文件包名
+	OutDir            string            // 保存路径
+	OutFileName       string            // 保存文件名
+	DbTag             string            // 数据库标签（gorm）
+	IsJsonTag         bool              // 是否使用json标签
+	IsJsonTagPkHidden bool              // json标记是否隐藏主键
+	IsNullToPoint     bool              // null
+	IsNullToSqlNull   bool              // sql null
+	TablePrefix       string            // 表前缀
+	StripTablePrefix  bool              // 移除表前缀
+	SelfTypeDef       map[string]string // 自定义类型
+	TableNames        string            // 表名（多个表名用","隔开）
 }
 
-// DBInfo mysql database information. mysql 数据库信息
-type DBInfo struct {
-	Host     string `validate:"required"` // Host. 地址
-	Port     int    // Port 端口号
-	Username string // Username 用户名
-	Password string // Password 密码
-	Database string // Database 数据库名
-	Type     int    // 数据库类型: 0:mysql , 1:sqlite , 2:mssql
+type DBConfig struct {
+	Gorm     *gorm.DB
+	Database string //数据库名字
 }
 
-// GetDbInfo Get configuration information .获取数据配置信息
-func GetDbInfo() DBInfo {
-	return conf.DBInfo
+func GetDBConfig() *DBConfig {
+	return conf.DBConfig
 }
 
 // GetOutDir Get Output Directory.获取输出目录

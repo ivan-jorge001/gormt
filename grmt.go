@@ -25,17 +25,18 @@ func ExecuteConfig(conf *config.Config) {
 
 func run() {
 	var mdb model.IModel
-	switch config.GetDbInfo().Type {
-	case 0:
+	t := config.GetDBConfig().Gorm.Dialector.Name()
+	switch t {
+	case "mysql":
 		mdb = genmysql.GetModel()
-	case 1:
+	case "sqlite":
 		mdb = gensqlite.GetModel()
-	case 2:
+	case "mssql":
 		mdb = genmssql.GetModel()
 	}
 
 	if mdb == nil {
-		log.Printf("Check db_info.type (0:mysql , 1:sqlite , 2:mssql)")
+		log.Printf("Check DBConfig.Type (mysql,sqlite,mssql)")
 		return
 	}
 
@@ -49,7 +50,6 @@ func run() {
 		path := filepath.Join(baseDir, v.FileName)
 		tools.WriteFile(path, []string{v.FileCtx}, true)
 
-		_, _ = exec.Command("fieldalignment", "-fix", path).Output()
 		_, _ = exec.Command("goimports", "-l", "-w", path).Output()
 		_, _ = exec.Command("gofmt", "-l", "-w", path).Output()
 	}

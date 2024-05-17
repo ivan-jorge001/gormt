@@ -7,9 +7,7 @@ import (
 	"sort"
 	"strings"
 
-	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"gorm.io/gorm/schema"
 
 	"github.com/wonli/gormt/config"
 	"github.com/wonli/gormt/internal/model"
@@ -23,25 +21,7 @@ type mysqlModel struct {
 }
 
 func (m *mysqlModel) GenModel() model.DBInfo {
-	options := &gorm.Config{
-		PrepareStmt:    false,
-		NamingStrategy: schema.NamingStrategy{SingularTable: true}, // 全局禁用表名复数
-	}
-
-	dbConfig := config.GetDbInfo()
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8&parseTime=True&loc=Local&interpolateParams=True",
-		dbConfig.Username,
-		dbConfig.Password,
-		dbConfig.Host,
-		dbConfig.Port,
-		dbConfig.Database,
-	)
-
-	orm, err := gorm.Open(mysql.Open(dsn), options)
-	if err != nil {
-		return model.DBInfo{}
-	}
-
+	orm := config.GetDBConfig().Gorm
 	var dbInfo model.DBInfo
 	m.getPackageInfo(orm, &dbInfo)
 	dbInfo.PackageName = m.GetPkgName()
@@ -51,7 +31,7 @@ func (m *mysqlModel) GenModel() model.DBInfo {
 
 // GetDbName get database name.获取数据库名字
 func (m *mysqlModel) GetDbName() string {
-	return config.GetDbInfo().Database
+	return config.GetDBConfig().Database
 }
 
 // GetTableNames get table name.获取格式化后指定的表名
