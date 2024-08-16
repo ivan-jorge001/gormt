@@ -1,4 +1,4 @@
-module github.com/wonli/gormt
+module github.com/ivan-jorge001/gormt
 
 go 1.22.1
 
@@ -17,6 +17,7 @@ require (
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/mattn/go-sqlite3 v1.14.17 // indirect
 	github.com/microsoft/go-mssqldb v1.6.0 // indirect
+	github.com/wonli/gormt v0.1.1-0.20240517095003-717b5c8e8477 // indirect
 	golang.org/x/crypto v0.12.0 // indirect
 	golang.org/x/text v0.12.0 // indirect
 	gorm.io/datatypes v1.2.0 // indirect

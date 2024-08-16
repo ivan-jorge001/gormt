@@ -5,9 +5,9 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/wonli/gormt/config"
-	"github.com/wonli/gormt/internal/cnf"
-	"github.com/wonli/gormt/mybigcamel"
+	"github.com/ivan-jorge001/gormt/config"
+	"github.com/ivan-jorge001/gormt/internal/cnf"
+	"github.com/ivan-jorge001/gormt/mybigcamel"
 )
 
 // getCamelName Big Hump or Capital Letter.大驼峰或者首字母大写

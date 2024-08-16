@@ -5,8 +5,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/wonli/gormt/internal/cnf"
-	"github.com/wonli/gormt/internal/generate"
+	"github.com/ivan-jorge001/gormt/internal/cnf"
+	"github.com/ivan-jorge001/gormt/internal/generate"
 )
 
 // SetName Setting element name.设置元素名字

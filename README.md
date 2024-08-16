@@ -28,7 +28,7 @@ This project is derived and improved from `https://github.com/xxjwxc/gormt`. Cha
 
 Install the tool using the following Go command:
 
- `go get github.com/wonli/gormt@latest`
+ `go get github.com/ivan-jorge001/gormt@latest`
  
 ### Usage
 
@@ -36,8 +36,8 @@ Install the tool using the following Go command:
 package main
 
 import (
-	"github.com/wonli/gormt"
-	"github.com/wonli/gormt/config"
+	"github.com/ivan-jorge001/gormt"
+	"github.com/ivan-jorge001/gormt/config"
 )
 
 func main() {

@@ -6,12 +6,12 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"github.com/wonli/gormt/config"
-	"github.com/wonli/gormt/internal/model"
-	"github.com/wonli/gormt/internal/model/genmssql"
-	"github.com/wonli/gormt/internal/model/genmysql"
-	"github.com/wonli/gormt/internal/model/gensqlite"
-	"github.com/wonli/gormt/tools"
+	"github.com/ivan-jorge001/gormt/config"
+	"github.com/ivan-jorge001/gormt/internal/model"
+	"github.com/ivan-jorge001/gormt/internal/model/genmssql"
+	"github.com/ivan-jorge001/gormt/internal/model/genmysql"
+	"github.com/ivan-jorge001/gormt/internal/model/gensqlite"
+	"github.com/ivan-jorge001/gormt/tools"
 )
 
 // ExecuteConfig exe the cmd

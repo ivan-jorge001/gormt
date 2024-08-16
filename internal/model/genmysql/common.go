@@ -4,7 +4,7 @@ import (
 	"log"
 	"strings"
 
-	"github.com/wonli/gormt/internal/model"
+	"github.com/ivan-jorge001/gormt/internal/model"
 )
 
 // GetModel get model interface. 获取model接口

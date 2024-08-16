@@ -9,9 +9,9 @@ import (
 
 	"gorm.io/gorm"
 
-	"github.com/wonli/gormt/config"
-	"github.com/wonli/gormt/internal/model"
-	"github.com/wonli/gormt/tools"
+	"github.com/ivan-jorge001/gormt/config"
+	"github.com/ivan-jorge001/gormt/internal/model"
+	"github.com/ivan-jorge001/gormt/tools"
 )
 
 // MySQLModel mysql model from IModel

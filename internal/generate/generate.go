@@ -1,6 +1,6 @@
 package generate
 
-import "github.com/wonli/gormt/tools"
+import "github.com/ivan-jorge001/gormt/tools"
 
 // interval.间隔
 var _interval = "\t"

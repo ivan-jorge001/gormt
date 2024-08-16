@@ -5,9 +5,9 @@ import (
 	"log"
 	"strings"
 
-	"github.com/wonli/gormt/config"
-	"github.com/wonli/gormt/internal/genstruct"
-	"github.com/wonli/gormt/mybigcamel"
+	"github.com/ivan-jorge001/gormt/config"
+	"github.com/ivan-jorge001/gormt/internal/genstruct"
+	"github.com/ivan-jorge001/gormt/mybigcamel"
 )
 
 type GenModel struct {

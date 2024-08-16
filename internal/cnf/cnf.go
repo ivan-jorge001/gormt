@@ -6,7 +6,7 @@ var EImportsHead = map[string]string{
 	"time.Time":      `"time"`,
 	"gorm.Model":     `"gorm.io/gorm"`,
 	"fmt":            `"fmt"`,
-	"*extype.Point":  `"github.com/wonli/gormt/extype"`,
+	"*extype.Point":  `"github.com/ivan-jorge001/gormt/extype"`,
 	"datatypes.JSON": `"gorm.io/datatypes"`,
 	"datatypes.Date": `"gorm.io/datatypes"`,
 }

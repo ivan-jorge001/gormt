@@ -8,8 +8,8 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
 
-	"github.com/wonli/gormt"
-	"github.com/wonli/gormt/config"
+	"github.com/ivan-jorge001/gormt"
+	"github.com/ivan-jorge001/gormt/config"
 )
 
 func main() {
